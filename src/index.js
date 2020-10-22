@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {HashRouter, BrowserRouter} from 'react-router-dom'
+import Store from './redux/Store'
+import {Provider} from 'react-redux';
+const Router = 
+process.env.NODE_ENV === 'development' ? HashRouter : BrowserRouter;
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   <Provider store={Store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

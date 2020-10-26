@@ -1,10 +1,8 @@
 import React from 'react'
+import Hero from './Hero/Hero'
 
-export const Landing = () => {
-    return (
-        <>
-            
-        </>
-    )
+const Landing = () => {
+    return  <Hero />
 }
+export default Landing
 

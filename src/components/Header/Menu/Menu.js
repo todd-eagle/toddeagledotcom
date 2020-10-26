@@ -1,9 +1,11 @@
 import React from 'react'
+import {MenuButton, MenuIcon} from '../../../styles/components/Menus'
 
-export const Menu = () => {
+const Menu = () => {
     return (
-        <>
-            
-        </>
+        <MenuButton>
+            <MenuIcon></MenuIcon>
+        </MenuButton>
     )
 }
+export default Menu

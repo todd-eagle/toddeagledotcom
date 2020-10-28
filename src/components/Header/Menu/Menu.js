@@ -1,11 +1,37 @@
-import React from 'react'
-import {MenuButton, MenuIcon} from '../../../styles/components/Menus'
+import React, {useState} from 'react'
+import {MainMenu, MenuButton, MenuIcon, Navigation,
+        CloseButton, MenuLogo, MenuLink, CloseIcon} from '../../../styles/components/Menus'
 
-const Menu = () => {
+const Menu = (props) => {
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const menuToggle = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
+
+    const menuHandler = () => {
+        menuToggle()
+    }
+
+    console.log('isMenuOpen: ',isMenuOpen)
+
     return (
-        <MenuButton>
-            <MenuIcon></MenuIcon>
-        </MenuButton>
+        <MainMenu>
+            <MenuButton onClick={()=>menuHandler()}>
+                <MenuIcon></MenuIcon>
+            </MenuButton>
+            <Navigation  menuState={isMenuOpen}>
+                <CloseButton onClick={()=>menuHandler()}>
+                    <CloseIcon></CloseIcon>
+                </CloseButton>
+                <MenuLogo>me.</MenuLogo>
+                <MenuLink>Stuff I Use.</MenuLink>
+                <MenuLink>Stuff I Like.</MenuLink>
+                <MenuLink>Contact Stuff.</MenuLink>
+                <MenuLink>Other Stuff.</MenuLink>
+            </Navigation>    
+        </MainMenu>    
     )
 }
 export default Menu

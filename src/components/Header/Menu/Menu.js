@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {MainMenu, MenuButton, MenuIcon, Navigation,
         CloseButton, MenuLogo, MenuLink, CloseIcon} from '../../../styles/components/Menus'
 
-const Menu = (props) => {
+const Menu = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -13,8 +13,6 @@ const Menu = (props) => {
     const menuHandler = () => {
         menuToggle()
     }
-
-    console.log('isMenuOpen: ',isMenuOpen)
 
     return (
         <MainMenu>

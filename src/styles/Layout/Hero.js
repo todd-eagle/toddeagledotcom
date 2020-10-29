@@ -1,9 +1,38 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {Colors} from '../Base/Colors'
+
+let rigthBkColor = '#603FD8'
+let leftBkColor = '#282828'
 
 export const HeroSection = styled.div`
     position: relative;
-    background:  linear-gradient(to right, ${Colors.color.leftHeroBkgrd} 0%, ${Colors.color.leftHeroBkgrd} 50%, ${Colors.color.rightHeroBkgrd} 50%, ${Colors.color.rightHeroBkgrd} 100%);
+    background:  linear-gradient(to right, ${leftBkColor}  50%, ${rigthBkColor} 50%);
+    transition: background-position 5s;
+    &::before {
+        background:  linear-gradient(to right, ${leftBkColor}  50%, #333 25%, ${leftBkColor} 25%);
+        content: '';    
+        height: 100%;
+        position: absolute;
+        top: 0; left: 0;
+        opacity: 0;
+        width: 100%;
+        height:100%;
+        z-index: 0;
+        transition: opacity .4s linear;
+    }
+
+    ${props => props.menuState ? css `
+        &::before {
+        opacity: 1;
+        }
+    ` : null}
+
+    /* &:hover {
+    &::before {
+      opacity: 1;
+    }
+  } */
+
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -12,10 +41,12 @@ export const HeroSection = styled.div`
     text-overflow: clip;
 `
 export const GreetWrapper = styled.div`
+    position: relative;
     display: flex;
     height: 75vh;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
 `
 export const GreetText = styled.p`
     font-family: acier-bat-solid, sans-serif;
@@ -26,6 +57,7 @@ export const GreetText = styled.p`
     color: ${Colors.color.fontSecondaryColor};
 `
 const BackgroundFont = styled.p`
+    position: relative;
     font-family: acumin-pro, sans-serif;
     position: absolute;
     font-weight: 700;
@@ -33,6 +65,7 @@ const BackgroundFont = styled.p`
     text-transform: uppercase;
     color: ${Colors.color.fontSecondaryColor};
     opacity: .03;
+    z-index: 1;
 `
 export const MassiveFont = styled(BackgroundFont)`
     font-size: 30rem;
@@ -48,7 +81,7 @@ export const RouterFont = styled(BackgroundFont)`
     top: 32rem;
     font-size: 22rem;
     right: 7rem;
-    z-index: 15;
+    z-index: 1;
 `
 export const ReduxFont = styled(RouterFont)`
     top: unset;
@@ -147,4 +180,11 @@ export const ReactRight = styled(HeroDevelopDesign)`
     background-color: ${Colors.color.primary};
     padding: 1rem;
     border: 1px solid #f2f2f2;
+`
+export const TWrapper = styled.div`
+    display: flex;
+`
+export const GhostMenu = styled.div`
+    width: ${props => !props.menuState ? '0' : '42rem'};
+    transition: all 0.4s ease-in;
 `

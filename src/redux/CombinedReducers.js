@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
-import auth from './reducers/AuthReducer'
-import generic from './reducers/DataReducer'
+import menu from './reducers/menuReducer'
 
 export default combineReducers({
-    auth,
-    generic
+    menu
 })

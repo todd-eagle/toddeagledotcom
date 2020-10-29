@@ -106,6 +106,6 @@ export const Navigation = styled.div`
     border-left: 1px solid #f2f2f2;
     top: 0;
     right: 0rem;
-    box-shadow: -6px 1px 15px -4px rgba(242,242,242,0.2);
+    box-shadow: -16px 1px 20px -4px rgba(242,242,242,0.1);
     transition: all 0.4s ease-in;
 `

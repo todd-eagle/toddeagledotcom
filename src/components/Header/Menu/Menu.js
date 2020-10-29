@@ -1,17 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
+import {toggleMenu} from '../../../redux/reducers/menuReducer'
 import {MainMenu, MenuButton, MenuIcon, Navigation,
         CloseButton, MenuLogo, MenuLink, CloseIcon} from '../../../styles/components/Menus'
 
-const Menu = () => {
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    const menuToggle = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
+const Menu = (props) => {
 
     const menuHandler = () => {
-        menuToggle()
+        props.toggleMenu()
     }
 
     return (
@@ -19,7 +15,7 @@ const Menu = () => {
             <MenuButton onClick={()=>menuHandler()}>
                 <MenuIcon></MenuIcon>
             </MenuButton>
-            <Navigation  menuState={isMenuOpen}>
+            <Navigation  menuState={props.menu.isMenuOpen}>
                 <CloseButton onClick={()=>menuHandler()}>
                     <CloseIcon></CloseIcon>
                 </CloseButton>
@@ -32,4 +28,5 @@ const Menu = () => {
         </MainMenu>    
     )
 }
-export default Menu
+const mapStateToProps = reduxState => reduxState
+export default connect(mapStateToProps, {toggleMenu})(Menu)
